@@ -11,6 +11,8 @@ A modern, SEO-optimized landing page hub for UtltyHub.com that showcases all uti
 - **Fast Performance** with optimized components
 - **Zero Data Collection** - Privacy-first approach
 - **Subdomain Navigation** - Easy access to all utility apps
+- **Google Analytics** integration for tracking
+- **Google AdSense** ready for monetization
 
 ## 📦 Tech Stack
 
@@ -20,12 +22,14 @@ A modern, SEO-optimized landing page hub for UtltyHub.com that showcases all uti
 - Tailwind CSS
 - Lucide Icons
 
-## 🛠️ Getting Started
+## � Getting Started
 
 ### Prerequisites
 
 - Node.js 18+ installed
 - npm or yarn package manager
+- Google Analytics account (optional, for tracking)
+- Google AdSense account (optional, for monetization)
 
 ### Installation
 
@@ -40,12 +44,23 @@ cd utltyhub
 npm install
 ```
 
-3. Run the development server:
+3. Set up environment variables (optional):
+```bash
+cp .env.local.example .env.local
+```
+
+Edit `.env.local` and add your IDs:
+```env
+NEXT_PUBLIC_GA_MEASUREMENT_ID=G-XXXXXXXXXX
+NEXT_PUBLIC_ADSENSE_ID=ca-pub-XXXXXXXXXXXXXXXX
+```
+
+4. Run the development server:
 ```bash
 npm run dev
 ```
 
-4. Open [http://localhost:3000](http://localhost:3000) in your browser
+5. Open [http://localhost:3000](http://localhost:3000) in your browser
 
 ## 📁 Project Structure
 
@@ -60,9 +75,12 @@ utltyhub/
 │   ├── robots.ts          # Robots.txt configuration
 │   └── sitemap.ts         # Sitemap configuration
 ├── components/            # React components
+│   ├── AdUnit.tsx         # AdSense ad unit component
 │   ├── CallToAction.tsx   # CTA section
 │   ├── Features.tsx       # Features section
 │   ├── Footer.tsx         # Site footer
+│   ├── GoogleAdsense.tsx  # AdSense integration
+│   ├── GoogleAnalytics.tsx # GA4 integration
 │   ├── Header.tsx         # Site header
 │   ├── Hero.tsx           # Hero section
 │   ├── ThemeProvider.tsx  # Dark mode provider
@@ -93,8 +111,21 @@ The main hub at `utltyhub.com` links to various utility subdomains:
 
 1. Push your code to GitHub
 2. Import the project in Vercel
-3. Configure the custom domain `utltyhub.com`
-4. Deploy!
+3. Add environment variables in Vercel dashboard:
+   - `NEXT_PUBLIC_GA_MEASUREMENT_ID` (optional)
+   - `NEXT_PUBLIC_ADSENSE_ID` (optional)
+4. Configure the custom domain `utltyhub.com`
+5. Deploy!
+
+See [DEPLOYMENT.md](DEPLOYMENT.md) for detailed deployment instructions.
+
+## 💰 Monetization Setup
+
+See [ADSENSE_ANALYTICS_SETUP.md](ADSENSE_ANALYTICS_SETUP.md) for complete instructions on:
+- Setting up Google Analytics
+- Configuring Google AdSense
+- Adding ad units to pages
+- Best practices for ad placement
 
 ### Other Platforms
 
