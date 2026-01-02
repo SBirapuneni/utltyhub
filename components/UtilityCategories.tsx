@@ -85,45 +85,56 @@ export function UtilityCategories() {
           {categories.map((category) => {
             const Icon = category.icon;
             const isExternal = category.link.startsWith('http');
-            const CardWrapper = category.available ? (isExternal ? 'a' : Link) : 'div';
-            const cardProps = category.available
-              ? isExternal
-                ? { href: category.link }
-                : { href: category.link }
-              : {};
+            const className = `group relative overflow-hidden rounded-2xl bg-gradient-to-br ${category.color} p-[1px] ${
+              category.available ? 'cursor-pointer' : 'cursor-not-allowed opacity-60'
+            }`;
+
+            const cardContent = (
+              <div className="h-full bg-white dark:bg-gray-900 rounded-2xl p-6 transition-transform duration-300 group-hover:scale-[0.98]">
+                <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${category.color} flex items-center justify-center mb-4`}>
+                  <Icon className="w-6 h-6 text-white" />
+                </div>
+                
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
+                  {category.name}
+                </h3>
+                
+                <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">
+                  {category.description}
+                </p>
+                
+                {category.available ? (
+                  <div className="flex items-center text-sm font-medium bg-gradient-to-r from-primary-600 to-primary-800 dark:from-primary-400 dark:to-primary-600 bg-clip-text text-transparent">
+                    Explore Now →
+                  </div>
+                ) : (
+                  <div className="inline-flex items-center px-3 py-1 rounded-full bg-gray-100 dark:bg-gray-800 text-xs font-medium text-gray-600 dark:text-gray-400">
+                    Coming Soon
+                  </div>
+                )}
+              </div>
+            );
+
+            if (!category.available) {
+              return (
+                <div key={category.name} className={className}>
+                  {cardContent}
+                </div>
+              );
+            }
+
+            if (isExternal) {
+              return (
+                <a key={category.name} href={category.link} className={className}>
+                  {cardContent}
+                </a>
+              );
+            }
 
             return (
-              <CardWrapper
-                key={category.name}
-                {...cardProps}
-                className={`group relative overflow-hidden rounded-2xl bg-gradient-to-br ${category.color} p-[1px] ${
-                  category.available ? 'cursor-pointer' : 'cursor-not-allowed opacity-60'
-                }`}
-              >
-                <div className="h-full bg-white dark:bg-gray-900 rounded-2xl p-6 transition-transform duration-300 group-hover:scale-[0.98]">
-                  <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${category.color} flex items-center justify-center mb-4`}>
-                    <Icon className="w-6 h-6 text-white" />
-                  </div>
-                  
-                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
-                    {category.name}
-                  </h3>
-                  
-                  <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">
-                    {category.description}
-                  </p>
-                  
-                  {category.available ? (
-                    <div className="flex items-center text-sm font-medium bg-gradient-to-r from-primary-600 to-primary-800 dark:from-primary-400 dark:to-primary-600 bg-clip-text text-transparent">
-                      Explore Now →
-                    </div>
-                  ) : (
-                    <div className="inline-flex items-center px-3 py-1 rounded-full bg-gray-100 dark:bg-gray-800 text-xs font-medium text-gray-600 dark:text-gray-400">
-                      Coming Soon
-                    </div>
-                  )}
-                </div>
-              </CardWrapper>
+              <Link key={category.name} href={category.link} className={className}>
+                {cardContent}
+              </Link>
             );
           })}
         </div>
