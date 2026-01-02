@@ -41,7 +41,7 @@ export function Hero() {
             </a>
           </div>
           
-          <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-8 max-w-3xl mx-auto">
+          <div className="mt-16 grid grid-cols-3 gap-8 max-w-2xl mx-auto">
             <div className="text-center">
               <div className="text-3xl font-bold text-primary-600 dark:text-primary-400">50+</div>
               <div className="text-sm text-gray-600 dark:text-gray-400 mt-1">Tools</div>
@@ -53,10 +53,6 @@ export function Hero() {
             <div className="text-center">
               <div className="text-3xl font-bold text-primary-600 dark:text-primary-400">24/7</div>
               <div className="text-sm text-gray-600 dark:text-gray-400 mt-1">Available</div>
-            </div>
-            <div className="text-center">
-              <div className="text-3xl font-bold text-primary-600 dark:text-primary-400">No Ads</div>
-              <div className="text-sm text-gray-600 dark:text-gray-400 mt-1">Clean UI</div>
             </div>
           </div>
         </div>
